@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript" src="animationEngin.js"></script>
+
+<script type="text/javascript" src="animation_pack/circular.js"></script>
+<script type="text/javascript" src="animation_pack/bounce.js"></script>
+<script type="text/javascript" src="animation_pack/makeEaseInOut.js"></script>
+<script type="text/javascript" src="animation_pack/makeEaseOut.js"></script>
+<script type="text/javascript" src="animation_pack/linear.js"></script>
+<script type="text/javascript" src="animation_pack/back.js"></script>
+<script type="text/javascript" src="animation_pack/quad.js"></script>
+<script type="text/javascript" src="animation_pack/quint.js"></script>
+<script type="text/javascript" src="animation_pack/elastic.js"></script>
+<style>
+.example_path {
+	position: relative;
+	overflow: hidden;
+	width: 530px;
+	height: 530px;
+	border: 3px solid #000;
+	
+}
+
+.example_path .example_block {
+	position: absolute;
+	background-color: blue;
+	width: 30px;
+	height: 20px;
+	padding-top: 10px;
+	text-align: center;
+	color: #fff;
+	font-size: 10px;
+	white-space: nowrap;
+}
+
+</style>
+<script type="text/javascript">
+function direc() {
+    var get_id = document.getElementById('direct');
+    
+    return get_id.options[get_id.selectedIndex].value;
+    
+}
+</script>
+</head>
+
+<body>
+Animation Name :
+<input type="button" onclick="move(document.getElementById('anima'),bounce, document.getElementById('delay').value,document.getElementById('spd').value, direc(), document.getElementById('to').value)" value="Bounce"/>
+<input type="button" onclick="move(document.getElementById('anima'),circular, document.getElementById('delay').value,document.getElementById('spd').value, direc(), document.getElementById('to').value)" value="Circular"/>
+<input type="button" onclick="move(document.getElementById('anima'),makeEaseOut(bounce), document.getElementById('delay').value,document.getElementById('spd').value, direc(), document.getElementById('to').value)" value="Make Ease Out"/>
+<input type="button" onclick="move(document.getElementById('anima'),makeEaseInOut(bounce), document.getElementById('delay').value,document.getElementById('spd').value,direc(), document.getElementById('to').value)" value="Make Ease In Out"/>
+<input type="button" onclick="move(document.getElementById('anima'),linear, document.getElementById('delay').value,document.getElementById('spd').value,direc(), document.getElementById('to').value)" value="Linear"/>
+<input type="button" onclick="move(document.getElementById('anima'),quad, document.getElementById('delay').value,document.getElementById('spd').value,direc(), document.getElementById('to').value)" value="Quad (power of X=2)"/>
+<input type="button" onclick="move(document.getElementById('anima'),quint, document.getElementById('delay').value,document.getElementById('spd').value,direc(), document.getElementById('to').value)" value="Quint (power of X=5)"/>
+<input type="button" onclick="move(document.getElementById('anima'),elastic, document.getElementById('delay').value,document.getElementById('spd').value,direc(), document.getElementById('to').value)" value="Elastic (coeff. X=1.5)"/>
+<input type="button" onclick="move(document.getElementById('anima'),back, document.getElementById('delay').value,document.getElementById('spd').value,direc(), document.getElementById('to').value)" value="Back (min X=1.5)"/>
+
+<label style="position: fixed; left:550px; top:150px;">Direction : </label><select id="direct" style="position: fixed; left:720px; top:150px;">
+<option value="top">top</option>
+<option value="left">left</option>
+<option value="right">right</option>
+<option value="bottom">bottom</option>
+</select>
+
+<label style="position: fixed; left:550px; top:190px;">To(max 500) : </label><input type="text" id="to" style="position: fixed; left:720px; top:190px;" value="500"/>
+<label style="position: fixed; left:550px; top:230px;">Duration(msec) : </label><input type="text" id="spd" style="position: fixed; left:720px; top:230px;" value="1000"/>
+<label style="position: fixed; left:550px; top:270px;">Delay(msec) : </label><input type="text" id="delay" style="position: fixed; left:720px; top:270px;"value="20"/>
+
+<div id="field"  class="example_path">
+	<div  id="anima" class="example_block"></div>
+</div>
+</body>
+</html>
